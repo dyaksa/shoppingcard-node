@@ -2,7 +2,8 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const adminRoute = require("./routes/admin");
 const homeRoute = require("./routes/shop");
-
+const root = require("./utils/path");
+const path = require("path");
 //port
 const port = process.env.PORT || 3000;
 
@@ -10,10 +11,13 @@ const port = process.env.PORT || 3000;
 const app = express();
 //set template engine
 app.set("view engine", "ejs");
+app.set("views", "views");
 //use body-parser
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+//set static public folder
+app.use(express.static(path.join(root, "public")));
 
 //routes
 app.use("/admin", adminRoute);

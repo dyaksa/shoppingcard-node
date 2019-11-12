@@ -1,0 +1,19 @@
+{
+  "name": "mvc-shoppingcart-node",
+  "version": "1.0.0",
+  "description": "mvc shopping cart nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dyaksa/shoppingcard-node.git"
+  },
+  "author": "Dyaksa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dyaksa/shoppingcard-node/issues"
+  },
+  "homepage": "https://github.com/dyaksa/shoppingcard-node#readme"
+}

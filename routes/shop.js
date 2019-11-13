@@ -1,11 +1,7 @@
 const express = require("express");
-
 const route = express.Router();
+const homeController = require("../controllers/adminController");
 
-route.get("/", (req, res, next) => {
-    res.render("shop", {
-        pageTitle: "Home Shop"
-    });
-});
+route.get("/", homeController.getProduct);
 
 module.exports = route;

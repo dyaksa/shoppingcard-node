@@ -4,6 +4,7 @@ const adminRoute = require("./routes/admin");
 const homeRoute = require("./routes/shop");
 const root = require("./utils/path");
 const path = require("path");
+const errorRoute = require("./controllers/error");
 //port
 const port = process.env.PORT || 3000;
 
@@ -22,11 +23,7 @@ app.use(express.static(path.join(root, "public")));
 //routes
 app.use("/admin", adminRoute);
 app.use(homeRoute);
-app.use((req, res, next) => {
-    res.status(404).render("404", {
-        pageTitle: "Page Not Found"
-    });
-})
+app.use(errorRoute.get404Page);
 
 //express listen
 app.listen(port);

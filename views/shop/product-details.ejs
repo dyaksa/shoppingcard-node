@@ -1,4 +1,22 @@
 <%- include("../includes/header") %>
 <%- include("../includes/navbar") %>
+<main class="container-fluid center">
+    <article>
+        <h1><%= product.title %></h1>
+        <hr>
+        <figure>
+            <img class="small" src="<%= product.imageUrl %>">
+        </figure>
+        <div class="content">
+            <h2 class="mt-2">$ <%= product.price %></h2>
+            <p><%= product.desc %></p>
+            <form method="POST" action="/cart">
+                <button type="submit" class="btn btn-primary btn-sm">Add to cart</button>
+                <input type="hidden" name="productId" value="<%= product.id %>">
+            </form>
+        </div>
 
+    </article>
+
+</main>
 <%- include("../includes/footer") %>

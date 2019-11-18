@@ -7,15 +7,15 @@
         <div class="col-sm-3">
             <div class="card-box">
                 <figure>
-                    <img class="card-image" src="https://miro.medium.com/max/1200/1*y6C4nSvy2Woe0m7bWEn4BA.png"
-                        alt="img">
+                    <img class="card-image" src="<%= product.imageUrl %>" alt="img">
                 </figure>
                 <div class="box">
                     <h4 class="box-title"><%= product.title %></h4>
-                    <p class="box-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias placeat quidem
-                        atque quam. Ea,
-                        asperiores!</p>
-                    <button class="btn btn-block btn-primary">$ 19</button>
+                    <p class="box-desc"><%= product.desc %></p>
+                    <form method="POST" action="/cart">
+                        <button class="btn btn-sm btn-primary">$ <%= product.price %></button>
+                        <input type="hidden" name="productId" value="<%= product.id %>">
+                    </form>
                 </div>
             </div>
         </div>

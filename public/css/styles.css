@@ -8,6 +8,18 @@ body {
     box-sizing: border-box;
 }
 
+.center {
+    text-align: center;
+}
+
+.small {
+    width: 50%;
+}
+
+.content {
+    padding: 5% 20% 5% 20%;
+}
+
 .container-fluid {
     padding: 3% 5%;
 }

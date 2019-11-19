@@ -12,4 +12,7 @@ route.get("/product", adminController.getProduct);
 //add product => POST
 route.post("/add-product", adminController.postProduct);
 
+//add edit product => GET
+route.get("/edit-product/:productId", adminController.getEditProduct);
+
 module.exports = route;

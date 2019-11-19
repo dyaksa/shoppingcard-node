@@ -13,7 +13,8 @@
                     <h4 class="box-title"><%= product.title %></h4>
                     <p class="box-desc"><%= product.desc %></p>
                     <div class="btn-group">
-                        <a class="mr-2 btn btn-success btn-sm" href="/admin/edit-product">Edit</a>
+                        <a class="mr-2 btn btn-success btn-sm"
+                            href="/admin/edit-product/<%= product.id %>?edit=true">Edit</a>
                         <form method="POST" action="/admin/delete">
                             <button class="btn btn-sm btn-danger">Delete</button>
                         </form>

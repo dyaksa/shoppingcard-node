@@ -28,15 +28,12 @@ module.exports = class Cart {
                 updateProduct.qty = updateProduct.qty + 1;
                 cart.products = [...cart.products];
                 cart.products[existingProductIndex] = updateProduct;
-                console.log(existingProductIndex);
-                console.log(cart);
             } else {
                 updateProduct = {
                     id: id,
                     qty: 1
                 };
                 cart.products = [...cart.products, updateProduct];
-                console.log(cart);
             }
             cart.totalPrice = cart.totalPrice + +productPrice;
             fs.writeFile(p, JSON.stringify(cart), (err) => {

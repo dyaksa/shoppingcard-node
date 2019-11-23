@@ -2,7 +2,8 @@ const Product = require("../models/product");
 
 exports.getAddProduct = (req, res, next) => {
     res.render("admin/add-product", {
-        pageTitle: "Home Page Shop"
+        pageTitle: "Home Page Shop",
+        editing: false
     })
 }
 
@@ -17,7 +18,6 @@ exports.getEditProduct = (req, res, next) => {
         if (!product) {
             return res.redirect("/");
         }
-        console.log(product);
         res.render("admin/add-product", {
             pageTitle: "Edit Product",
             editing: editMode,
@@ -26,12 +26,23 @@ exports.getEditProduct = (req, res, next) => {
     });
 }
 
+exports.postEditProduct = (req, res, next) => {
+    const id = req.body.productId;
+    const title = req.body.title;
+    const imageUrl = req.body.imageUrl;
+    const price = req.body.price;
+    const desc = req.body.desc;
+    const products = new Product(id, title, imageUrl, price, desc);
+    products.save();
+    res.redirect("/admin/product");
+}
+
 exports.postProduct = (req, res, next) => {
     let title = req.body.title;
     let imageUrl = req.body.imageUrl;
     let price = req.body.price;
     let desc = req.body.desc;
-    const products = new Product(title, imageUrl, price, desc);
+    const products = new Product(null, title, imageUrl, price, desc);
     products.save();
     res.redirect("/");
 }

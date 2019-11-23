@@ -4,27 +4,35 @@
     <div class="col-sm-8">
         <div class="card">
             <div class="card-header">
-                <h1>Add Product</h1>
+                <h1><%= (editing) ? "Edit Product" : "Add Product" %></h1>
             </div>
             <div class="card-body">
-                <form action="/admin/add-product" method="POST">
+                <form action="<%= (editing) ? '/admin/edit-product' : '/admin/add-product' %>" method="POST">
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input class="form-control" type="text" name="title">
+                        <input class="form-control" type="text" name="title"
+                            value="<%= (editing) ? product.title : "" %>">
                     </div>
                     <div class="form-group">
                         <label for="imageUrl">Image Url</label>
-                        <input class="form-control" type="text" name="imageUrl">
+                        <input class="form-control" type="text" name="imageUrl"
+                            value="<%= (editing) ? product.imageUrl : "" %>">
                     </div>
                     <div class="form-group">
                         <label for="price">Price</label>
-                        <input class="form-control" type="number" name="price">
+                        <input class="form-control" type="number" name="price"
+                            value="<%= (editing) ? product.price : "" %>">
                     </div>
                     <div class="form-group">
                         <label for="desc">Description</label>
-                        <textarea class="form-control" name="desc" cols="8"></textarea>
+                        <textarea class="form-control" name="desc"
+                            cols="8"><%= (editing) ? product.desc : "" %></textarea>
                     </div>
-                    <button type="submit" class="btn btn-sm btn-primary">Add Product</button>
+                    <button type="submit"
+                        class="btn btn-sm btn-primary"><%= (editing) ? "Edit Product" : "Add Product" %></button>
+                    <% if(editing){ %>
+                    <input type="hidden" value="<%= product.id %>" name="productId">
+                    <% } %>
                 </form>
             </div>
         </div>

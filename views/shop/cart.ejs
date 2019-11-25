@@ -1,6 +1,14 @@
 <%- include("../includes/header") %>
 <%- include("../includes/navbar") %>
 <main class="container-fluid">
-
+    <% if(products.length > 0) { %>
+    <ul>
+        <% products.forEach(product => { %>
+        <li><%= product.productData.title %> (<%= product.qty %>)</li>
+        <% }) %>
+    </ul>
+    <% } else { %>
+    <h1>Cart is Empty!</h1>
+    <% } %>
 </main>
 <%- include("../includes/footer") %>

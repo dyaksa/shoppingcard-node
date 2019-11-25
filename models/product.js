@@ -3,6 +3,8 @@ const path = require("path");
 const root = require("../utils/path");
 const random = require("../utils/random");
 
+const Cart = require("../models/cart");
+
 const p = path.join(root, "data", "product.json");
 const getProductFromFile = (cb) => {
     fs.readFile(p, (err, products) => {
@@ -21,6 +23,18 @@ module.exports = class Product {
         this.imageUrl = imageUrl;
         this.price = price;
         this.desc = desc;
+    }
+
+    static deleteById(id) {
+        getProductFromFile((products) => {
+            const product = products.find(p => p.id === id);
+            const updateProduct = products.filter(p => p.id !== id);
+            fs.writeFile(p, JSON.stringify(updateProduct), err => {
+                if (!err) {
+                    Cart.deleteById(id, product.price);
+                }
+            });
+        });
     }
 
     save() {

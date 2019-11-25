@@ -17,6 +17,7 @@
                             href="/admin/edit-product/<%= product.id %>?edit=true">Edit</a>
                         <form method="POST" action="/admin/delete">
                             <button class="btn btn-sm btn-danger">Delete</button>
+                            <input type="hidden" value="<%= product.id %>" name="productId">
                         </form>
                     </div>
                 </div>

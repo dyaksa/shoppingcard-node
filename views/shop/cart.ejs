@@ -5,6 +5,10 @@
     <ul>
         <% products.forEach(product => { %>
         <li><%= product.productData.title %> (<%= product.qty %>)</li>
+        <form method="POST" action="/delete-product">
+            <input type="hidden" value="<%= product.productData.id %>" name="productId">
+            <button class="btn btn-success btn-sm">Delete</button>
+        </form>
         <% }) %>
     </ul>
     <% } else { %>

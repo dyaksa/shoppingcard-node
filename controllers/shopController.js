@@ -49,9 +49,6 @@ exports.getCart = (req, res, next) => {
             });
         });
     });
-    // res.render("shop/cart", {
-    //     pageTitle: "Your Cart"
-    // });
 
 }
 
@@ -74,4 +71,12 @@ exports.getCheckout = (req, res, next) => {
     res.render("shop/checkout", {
         pageTitle: "Checkout"
     })
+}
+
+exports.postDeleteCart = (req, res, next) => {
+    const prodId = req.body.productId;
+    Product.findById(prodId, (product) => {
+        Cart.deleteById(prodId, product.price);
+        res.redirect("/cart");
+    });
 }

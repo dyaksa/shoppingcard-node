@@ -1,5 +1,6 @@
-const Product = require("../models/product");
+// const Product = require("../models/product");
 const Cart = require("../models/cart");
+const Product = require("../models/productDB");
 
 exports.getProduct = (req, res, next) => {
     Product.fetchAll(products => {
@@ -22,12 +23,16 @@ exports.getProductId = (req, res, next) => {
 }
 
 exports.getIndex = (req, res, next) => {
-    Product.fetchAll(products => {
-        res.render("shop/index", {
-            products: products,
-            pageTitle: "Home Page"
+    Product.fetchAll()
+        .then(([rows, fieldData]) => {
+            res.render("shop/index", {
+                products: rows,
+                pageTitle: "Home Page"
+            });
+        })
+        .catch(err => {
+            console.log(err);
         });
-    });
 }
 
 exports.getCart = (req, res, next) => {

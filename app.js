@@ -7,6 +7,7 @@ const path = require("path");
 const errorRoute = require("./controllers/error");
 //port
 const port = process.env.PORT || 3000;
+const db = require("./utils/database");
 
 //init express
 const app = express();
